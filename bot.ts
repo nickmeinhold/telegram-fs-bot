@@ -1,4 +1,4 @@
-#!/usr/bin/env -S deno run --allow-net --allow-env --allow-run --allow-read
+#!/usr/bin/env -S deno run --allow-net --allow-env --allow-run --allow-read --allow-import
 
 /**
  * Telegram bot that provides file system access via ls command.
@@ -7,9 +7,10 @@
  * and restrict access to authorized users only.
  */
 
+import "https://deno.land/std@0.224.0/dotenv/load.ts";
 import { Bot, Context } from "https://deno.land/x/grammy@v1.21.1/mod.ts";
 
-// Get bot token from environment
+// Get bot token from environment (loaded from .env)
 const BOT_TOKEN = Deno.env.get("TELEGRAM_BOT_TOKEN");
 
 if (!BOT_TOKEN) {
